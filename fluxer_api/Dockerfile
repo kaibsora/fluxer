@@ -50,7 +50,7 @@ RUN corepack enable && corepack prepare pnpm@10.29.3 --activate
 COPY --from=deploy /out ./
 COPY --from=deploy /usr/src/app/tsconfigs /usr/src/app/tsconfigs
 
-COPY /entrypoint.sh /entrypoint.sh
+COPY --from=base entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 RUN rm -rf pkgs && \
