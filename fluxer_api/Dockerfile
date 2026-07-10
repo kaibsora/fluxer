@@ -50,6 +50,9 @@ RUN corepack enable && corepack prepare pnpm@10.29.3 --activate
 COPY --from=deploy /out ./
 COPY --from=deploy /usr/src/app/tsconfigs /usr/src/app/tsconfigs
 
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
 RUN rm -rf pkgs && \
 	mkdir -p /usr/src/app/.cache/corepack && \
 	chown -R 65532:65532 /usr/src/app
@@ -61,8 +64,10 @@ ENV NODE_OPTIONS="--max-old-space-size=2048"
 ENV NODE_EXTRA_CA_CERTS=/etc/ssl/certs/ca-certificates.crt
 ENV BUILD_VERSION=${BUILD_VERSION}
 
+
+
 USER 65532:65532
 
 EXPOSE 8080
-
+ENTRYPOINT ["/entrypoint.sh"]
 CMD ["./node_modules/.bin/tsx", "src/AppEntrypoint.ts"]
