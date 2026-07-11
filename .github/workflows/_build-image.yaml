@@ -86,7 +86,7 @@ jobs:
           - platform: amd64
             runner: self-hosted
           - platform: arm64
-            runner: self-hosted
+            runner: self-hosted-arm
     steps:
       - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0
         env:
