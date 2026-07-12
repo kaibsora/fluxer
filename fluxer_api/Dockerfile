@@ -69,5 +69,4 @@ ENV BUILD_VERSION=${BUILD_VERSION}
 USER 65532:65532
 
 EXPOSE 8080
-ENTRYPOINT ["/entrypoint.sh"]
-CMD ["./node_modules/.bin/tsx", "src/AppEntrypoint.ts"]
+CMD ["/entrypoint.sh", "./node_modules/.bin/tsx", "src/AppEntrypoint.ts"]
