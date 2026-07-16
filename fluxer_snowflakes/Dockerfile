@@ -18,6 +18,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates
 	rm -rf /var/lib/apt/lists/*
 
 COPY --from=builder /usr/src/app/target/release/fluxer-snowflakes /usr/local/bin/fluxer-snowflakes
+COPY fluxer_snowflakes/scripts/entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
 ENV BUILD_VERSION="${BUILD_VERSION}"
 
@@ -25,4 +27,4 @@ USER 65532:65532
 
 EXPOSE 8090
 
-CMD ["/usr/local/bin/fluxer-snowflakes"]
+CMD ["/entrypoint.sh", "/usr/local/bin/fluxer-snowflakes"]
