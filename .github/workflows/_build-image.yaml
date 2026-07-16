@@ -53,7 +53,7 @@ env:
 jobs:
   meta:
     name: resolve metadata
-    runs-on: self-hosted
+    runs-on: [self-hosted,x64]
     timeout-minutes: 5
     outputs:
       build_version: ${{ steps.vars.outputs.build_version }}
@@ -84,7 +84,7 @@ jobs:
       matrix:
         include:
           - platform: amd64
-            runner: self-hosted
+            runner: [self-hosted,x64]
           - platform: arm64
             runner: self-hosted-arm
     steps:
