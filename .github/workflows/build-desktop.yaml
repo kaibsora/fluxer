@@ -110,7 +110,7 @@ jobs:
     needs:
       - meta
       - matrix
-    runs-on: ${{ matrix.os }}
+    runs-on: self-hosted
     environment: desktop-releases
     timeout-minutes: 60
     strategy:
