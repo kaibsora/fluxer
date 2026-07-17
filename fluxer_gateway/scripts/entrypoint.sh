@@ -1,4 +1,5 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
+
 # usage: file_env VAR [DEFAULT]
 #    ie: file_env 'XYZ_DB_PASSWORD' 'example'
 # (will allow for "$XYZ_DB_PASSWORD_FILE" to fill in the value of
@@ -38,4 +39,6 @@ file_env 'FLUXER_ADMIN_SECRET_KEY_BASE'
 file_env 'FLUXER_ADMIN_OAUTH_CLIENT_SECRET'  
 file_env 'MEILI_MASTER_KEY'
 
+
 exec "$@"
+# pulled from https://github.com/BretFisher/ama/discussions/215#:~:text=for%20the%20registry.-,entrypoint.sh,-%23!/usr/bin
