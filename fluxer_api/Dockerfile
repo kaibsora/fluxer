@@ -50,8 +50,8 @@ RUN corepack enable && corepack prepare pnpm@10.29.3 --activate
 COPY --from=deploy /out ./
 COPY --from=deploy /usr/src/app/tsconfigs /usr/src/app/tsconfigs
 
-COPY fluxer_api/scripts/entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
+COPY scripts/secrets-file.sh /file-secrets.sh
+RUN chmod +x /file-secrets.sh
 
 RUN rm -rf pkgs && \
 	mkdir -p /usr/src/app/.cache/corepack && \
@@ -69,4 +69,4 @@ ENV BUILD_VERSION=${BUILD_VERSION}
 USER 65532:65532
 
 EXPOSE 8080
-CMD ["/entrypoint.sh", "./node_modules/.bin/tsx", "src/AppEntrypoint.ts"]
+CMD ["/file-secrets.sh", "./node_modules/.bin/tsx", "src/AppEntrypoint.ts"]
