@@ -43,7 +43,7 @@ env:
 jobs:
   meta:
     name: Resolve build metadata
-    runs-on: ubuntu-24.04-arm
+    runs-on: self-hosted-arm
     environment: desktop-releases
     timeout-minutes: 25
     outputs:
@@ -78,7 +78,7 @@ jobs:
 
   matrix:
     name: Resolve build matrix
-    runs-on: ubuntu-24.04-arm
+    runs-on: self-hosted
     environment: desktop-releases
     timeout-minutes: 25
     outputs:
@@ -422,7 +422,7 @@ jobs:
 
   check_signing:
     name: Check signing secrets
-    runs-on: ubuntu-24.04-arm
+    runs-on: self-hosted-arm
     environment: desktop-releases
     timeout-minutes: 5
     outputs:
@@ -565,7 +565,7 @@ jobs:
       - meta
       - build
       - sign_windows
-    runs-on: ubuntu-24.04-arm
+    runs-on: self-hosted-arm
     environment: desktop-releases
     timeout-minutes: 60
     env:
@@ -665,7 +665,7 @@ jobs:
     needs:
       - meta
       - upload
-    runs-on: ubuntu-24.04-arm
+    runs-on: self-hosted-arm
     environment: desktop-releases
     timeout-minutes: 10
     steps:
