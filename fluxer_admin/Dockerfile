@@ -53,7 +53,7 @@ RUN apt-get update \
 	&& rm -rf /var/lib/apt/lists/*
 
 COPY --from=builder /usr/local/bin/fluxer-admin /usr/local/bin/fluxer-admin
-COPY scripts/secrets-file.sh /file-secrets.sh
+COPY scripts/file-secrets.sh /file-secrets.sh
 RUN chmod +x /file-secrets.sh
 
 ENV BUILD_VERSION="${BUILD_VERSION}"

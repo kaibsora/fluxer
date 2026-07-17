@@ -54,7 +54,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 COPY --from=build /usr/src/app/fluxer_gateway/_build/prod/rel/fluxer_gateway .
 COPY fluxer_gateway/scripts/docker_entrypoint.sh /opt/fluxer_gateway/bin/docker_entrypoint.sh
 COPY fluxer_gateway/scripts/fluxer_gateway_release_wrapper.sh /opt/fluxer_gateway/bin/fluxer_gateway.wrapper
-COPY scripts/secrets-file.sh /file-secrets.sh
+COPY scripts/file-secrets.sh /file-secrets.sh
 
 RUN mv /opt/fluxer_gateway/bin/fluxer_gateway /opt/fluxer_gateway/bin/fluxer_gateway.real && \
 	mv /opt/fluxer_gateway/bin/fluxer_gateway.wrapper /opt/fluxer_gateway/bin/fluxer_gateway && \

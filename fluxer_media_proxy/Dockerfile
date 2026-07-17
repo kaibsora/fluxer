@@ -53,7 +53,7 @@ RUN groupadd --system --gid 10001 fluxer \
     && useradd --system --uid 10001 --gid 10001 --home /var/lib/fluxer --create-home fluxer
 
 COPY --from=builder /usr/local/bin/fluxer-media-proxy /usr/local/bin/fluxer-media-proxy
-COPY scripts/secrets-file.sh /file-secrets.sh
+COPY scripts/file-secrets.sh /file-secrets.sh
 RUN chmod +x /file-secrets.sh
 
 RUN install -d -o fluxer -g fluxer /var/lib/fluxer/media_proxy_storage
