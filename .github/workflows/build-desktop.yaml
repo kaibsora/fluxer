@@ -43,7 +43,7 @@ env:
 jobs:
   meta:
     name: Resolve build metadata
-    runs-on: self-hosted-arm
+    runs-on: self-hosted
     environment: desktop-releases
     timeout-minutes: 25
     outputs:
@@ -422,7 +422,7 @@ jobs:
 
   check_signing:
     name: Check signing secrets
-    runs-on: self-hosted-arm
+    runs-on: self-hosted
     environment: desktop-releases
     timeout-minutes: 5
     outputs:
@@ -452,7 +452,7 @@ jobs:
       - matrix
       - build
       - check_signing
-    runs-on: blacksmith-32vcpu-windows-2025
+    runs-on: [self-hosted,x64]
     environment: desktop-releases
     timeout-minutes: 25
     env:
@@ -565,7 +565,7 @@ jobs:
       - meta
       - build
       - sign_windows
-    runs-on: self-hosted-arm
+    runs-on: self-hosted
     environment: desktop-releases
     timeout-minutes: 60
     env:
@@ -665,7 +665,7 @@ jobs:
     needs:
       - meta
       - upload
-    runs-on: self-hosted-arm
+    runs-on: self-hosted
     environment: desktop-releases
     timeout-minutes: 10
     steps:
